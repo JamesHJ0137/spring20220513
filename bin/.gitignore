@@ -1,0 +1,8 @@
+target/
+Bin/
+build/
+.classpath
+.project
+.settings/
+.springBeans
+*.properties
