@@ -11,7 +11,7 @@
 			</c:url>
 			
 			<li class="page-item ${pageInfo.current == pageNum ? 'active' : '' }">
-				<a class="page-link " href="sub09?page=${link }">${pageNum }</a>
+				<a class="page-link " href="list?page=${link }">${pageNum }</a>
 			</li>
 		</c:forEach>
 	</ul>
