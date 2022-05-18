@@ -18,13 +18,34 @@ public class Controller1 {
 	private Service1 service;
 	
 	
-	@RequestMapping("/board/list")
-	public void listBoard(Model model) {
-		List<BoardDto> list = service.listBoard();
+//	@RequestMapping("/board/list")
+//	public void listBoard(Model model) {
+//		List<BoardDto> list = service.listBoard();
+//		
+//		model.addAttribute("boardList", list);
+//	}
+	
+	@GetMapping("/board/list")
+	public void listBoard(@RequestParam(name="page", defaultValue="1") int page, Model model) {
+		int rowPerPage = 5;
+		
+		int totalRecords = service.countWriting();
+		int end = (totalRecords - 1) / rowPerPage + 1;
+		
+		PageInfoDto pageInfo = new PageInfoDto();
+		
+		pageInfo.setCurrent(page);
+		pageInfo.setEnd(end);
+
+		model.addAttribute("pageInfo", pageInfo);
+		
+		List<BoardDto> list = service.listBoard(page, rowPerPage);
 		
 		model.addAttribute("boardList", list);
+		
 	}
 	
+ 	
 	@GetMapping("/board/{id}")
 	public String getBoard(@PathVariable("id") int id, Model model) {
 		BoardDto dto = service.getBoard(id);

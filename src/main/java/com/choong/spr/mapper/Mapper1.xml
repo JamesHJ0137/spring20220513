@@ -9,6 +9,7 @@
 	FROM Board b LEFT JOIN Reply r ON b.id = r.board_id 
 	GROUP BY b.id 
 	ORDER BY b.id DESC 
+	LIMIT #{from}, #{rowPerPage}
 </select>
 
 <select id="getBoard" resultType="com.choong.spr.domain.BoardDto">
@@ -61,5 +62,10 @@
 	SET content = #{content } 
 	WHERE id = #{id }
 </update>
+
+<select id="countWriting" resultType="int">
+	SELECT Count(b.id) 
+	FROM Board b 
+</select>
 
 </mapper>

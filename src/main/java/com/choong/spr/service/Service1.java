@@ -18,8 +18,9 @@ public class Service1 {
 	@Autowired
 	private Mapper1 replyMapper;
 	
-	public List<BoardDto> listBoard() {
-		return mapper.selectBoard();
+	public List<BoardDto> listBoard(int page, int rowPerPage) {
+		int from = (page-1) * rowPerPage;
+		return mapper.selectBoard(from, rowPerPage);
 	}
 
 	public BoardDto getBoard(int id) {
@@ -62,6 +63,10 @@ public class Service1 {
 	public boolean modifyReply(ReplyDto reply) {
 		int cnt = mapper.updateReply(reply);
 		return cnt == 1;
+	}
+
+	public int countWriting() {
+		return mapper.countWriting();
 	}
 
 }

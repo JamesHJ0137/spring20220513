@@ -2,11 +2,13 @@ package com.choong.spr.mapper;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.choong.spr.domain.*;
 
 public interface Mapper1 {
 
-	List<BoardDto> selectBoard();
+	List<BoardDto> selectBoard(@Param("from") int from, @Param("rowPerPage") int rowPerPage);
 
 	BoardDto getBoard(int id);
 
@@ -25,5 +27,7 @@ public interface Mapper1 {
 	int updateReply(ReplyDto reply);
 	
 	void deleteReplyByBoard(int boardId);
+
+	int countWriting();
 
 }
