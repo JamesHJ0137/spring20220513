@@ -40,13 +40,13 @@ public class Service1 {
 	}
 
 	public boolean addBoard(BoardDto board) {
-		board.setInserted(LocalDateTime.now());
+//		board.setInserted(LocalDateTime.now());
 		int cnt = mapper.insertBoard(board);
 		return cnt == 1;
 	}
 
 	public boolean addReply(ReplyDto reply) {
-		reply.setInserted(LocalDateTime.now());
+//		reply.setInserted(LocalDateTime.now());
 		int cnt = mapper.insertReply(reply);
 		return cnt == 1;
 	}

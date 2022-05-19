@@ -35,7 +35,11 @@
 			</div>
 			<div class="col-11">
 				<h1>자유게시판</h1>
-				<h2>자유롭게 글을 쓸 수 있는 게시판입니다.</h2>
+				<h2>자유롭게 글을 쓸 수 있는 게시판입니다.
+					<button class="btn btn-dark" type="button" onclick="location.href='${writeLink }'">나도 글쓰기</button>
+				</h2>
+				
+
 				<table class="table">
 					<thead>
 						<tr>

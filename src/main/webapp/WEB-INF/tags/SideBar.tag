@@ -6,7 +6,7 @@
 <c:url value="/board/board/write" var="insertUrl"></c:url>
 
   <div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem;">
-    <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
+    <a href="#" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
       <svg class="bi" width="30" height="30"><use xlink:href="#bootstrap"/></svg>
       <span class="visually-hidden">Icon-only</span>
     </a>

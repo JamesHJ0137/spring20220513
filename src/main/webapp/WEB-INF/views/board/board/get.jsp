@@ -20,17 +20,6 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 	referrerpolicy="no-referrer"></script>
 
-<script>
-	$(".btn btn-danger").click(function() {
-		const replyId = $(this).attr("data-reply-id");
-		const message = "댓글을 삭제하시겠습니까?";
-		
-		if(confirm(message)) {
-			$("#replyDeleteInput").val(replyId);
-			$("#replyDeleteForm").submit();
-		}
-	});
-</script>
 
 <title>${board.id }번게시물</title>
 </head>
@@ -48,17 +37,20 @@
 
 				<form action="${appRoot }/board/board/modify" method="post">
 					<input type="hidden" name="id" value="${board.id }" />
-
-					제목 :
-					<input type="text" value="${board.title }" name="title" />
+					
+					<label class="form-label" for="input1">제목</label>
+					<input class="form-control" type="text" value="${board.title }" name="title" required id="input1" />
 					<br />
-					본문 :
-					<textarea name="body" cols="100" rows="30">${board.body }</textarea>
-					<br />
-					작성일시 :
+					
+					<label for="input2" class="form-label">작성일</label>
 					<input type="datetime-local" value="${board.inserted }" readonly />
 					<br />
-					<button type="button" class="btn btn-primary">
+					
+					<label for="textarea1" class="form-label">본문</label>
+					<textarea class="form-control" cols="100" rows="30" name="body" id="textarea1">${board.body }</textarea>
+					<br />
+
+					<button class="btn btn-info">
 						<i class="fa-solid fa-eraser"></i>
 						수정
 					</button>
@@ -67,7 +59,7 @@
 				<c:url value="/board/board/remove" var="removeLink" />
 				<form action="${removeLink }" method="post">
 					<input type="hidden" name="id" value="${board.id }" />
-					<button type="button" class="btn btn-danger" data-reply-id="${reply.id }">
+					<button class="btn btn-danger">
 						<i class="fa-regular fa-trash-can"></i>
 						삭제
 					</button>
@@ -75,60 +67,53 @@
 
 				<hr />
 
-				<h2>
+				<h1>
 					<i class="fa-solid fa-comment-dots"></i>
 					댓글
-				</h2>
+				</h1>
 
 				<c:url value="/board/reply/add" var="replyAddLink" />
 				<form action="${replyAddLink }" method="post">
 					<input type="hidden" name="boardId" value="${board.id }" />
-					댓글 :
-					<input type="text" name="content" size="100"
-						placeholder="댓글을 남겨주세요 :)" />
-					<button>쓰기</button>
+					<input type="text" name="content" size="100" />
+
+					<button class="btn btn-dark">쓰기</button>
 				</form>
 
 				<hr />
 
-				<div>
-					<c:forEach items="${replyList }" var="reply">
-						<div style="border: 1px solid black; margin-bottom: 3px;">
-							${reply.inserted } :
-							<c:url value="/board/reply/modify" var="replyModifyLink" />
-							<div>
-								<form action="${replyModifyLink }" method="post">
-									<input type="hidden" value="${reply.id }" name="id" />
-									<input type="hidden" name="boardId" value="${board.id }" />
-									<input type="text" value="${reply.content }" name="content" />
-									<button type="button" class="btn btn-primary">
-										<i class="fa-solid fa-eraser"></i>
-										수정
-									</button>
-								</form>
-	
-								<c:url value="/board/reply/remove" var="replyRemoveLink" />
-								<form action="${replyRemoveLink }" method="post">
-									<input type="hidden" name="id" value="${reply.id }" />
-									<input type="hidden" name="boardId" value="${board.id }" />
-									<button type="button" class="btn btn-danger" data-reply-id="${reply.id }">
-										<i class="fa-regular fa-trash-can"></i>
-										삭제
-									</button>
-								</form>
-							</div>
-						</div>
-					</c:forEach>
-				</div>
+				<c:forEach items="${replyList }" var="reply">
+
+					<div>
+						${reply.inserted } :
+
+						<c:url value="/board/reply/modify" var="replyModifyLink" />
+						<form action="${replyModifyLink }" method="post">
+							<input type="hidden" value="${reply.id }" name="id" />
+							<input type="hidden" name="boardId" value="${board.id }" />
+							<input type="text" value="${reply.content }" name="content" size="100"/>
+							<br />
+							<button class="btn btn-info">
+								<i class="fa-solid fa-eraser"></i>
+								댓글 수정
+							</button>
+						</form>
+
+						<c:url value="/board/reply/remove" var="replyRemoveLink" />
+						<form action="${replyRemoveLink }" method="post">
+							<input type="hidden" name="id" value="${reply.id }" />
+							<input type="hidden" name="boardId" value="${board.id }" />
+							<button class="btn btn-danger">
+								<i class="fa-regular fa-trash-can"></i>
+								댓글 삭제
+							</button>
+						</form>
+					</div>
+
+				</c:forEach>
+
 			</div>
 		</div>
-	</div>
-
-	<div class="d-none">
-		<form id="replyDeleteForm" action="${appRoot }" method="post">
-			<input id="replyDeleteInput" type="text" name="id" />
-			<input type="text" name="boardId" value="${board.id }" />
-		</form>
 	</div>
 
 </body>

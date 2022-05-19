@@ -35,23 +35,19 @@
 				<c:url value="/board/board/write" var="writeLink" />
 				<form action="${writeLink }" method="post">
 					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">
-							제목 :
-							<input type="text" name="title" placeholder="새 제목" size="98.9" />
+						<label for="exampleFormControlInput1" class="form-label">제목</label>
+						<input type="text" name="title" placeholder="새 제목" size="98.9" />
 							<br />
-						</label>
 					</div>
 
 					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">
-							본문 :
+						<label for="exampleFormControlInput1" class="form-label">본문</label>
 							<textarea name="body" id="" cols="100" rows="30"
 								placeholder="여기에 글을 작성해주세요~!"></textarea>
 							<br />
-						</label>
 					</div>
 
-					<button>등록</button>
+					<button class="btn btn-dark"><i class="fa-solid fa-cloud-word"></i>등록</button>
 				</form>
 			</div>
 		</div>
