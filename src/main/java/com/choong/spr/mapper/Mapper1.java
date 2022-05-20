@@ -8,7 +8,8 @@ import com.choong.spr.domain.*;
 
 public interface Mapper1 {
 
-	List<BoardDto> selectBoard(@Param("from") int from, @Param("rowPerPage") int rowPerPage);
+	List<BoardDto> selectBoard(@Param("type") String type,@Param("keyword") String string, 
+			@Param("from") int from, @Param("rowPerPage") int rowPerPage);
 
 	BoardDto getBoard(int id);
 
@@ -19,13 +20,13 @@ public interface Mapper1 {
 	int insertBoard(BoardDto board);
 
 	int insertReply(ReplyDto reply);
-	
+
 	List<ReplyDto> selectReplyByBoardId(int boardId);
 
 	int deleteReplyById(int id);
 
 	int updateReply(ReplyDto reply);
-	
+
 	void deleteReplyByBoard(int boardId);
 
 	int countWriting();

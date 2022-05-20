@@ -19,7 +19,11 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 	referrerpolicy="no-referrer"></script>
-
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
+	
 <title>글 작성 - 게시물</title>
 </head>
 <body>
@@ -37,17 +41,20 @@
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label">제목</label>
 						<input type="text" name="title" placeholder="새 제목" size="98.9" />
-							<br />
+						<br />
 					</div>
 
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label">본문</label>
-							<textarea name="body" id="" cols="100" rows="30"
-								placeholder="여기에 글을 작성해주세요~!"></textarea>
-							<br />
+						<textarea name="body" id="" cols="100" rows="30"
+							placeholder="여기에 글을 작성해주세요~!"></textarea>
+						<br />
 					</div>
 
-					<button class="btn btn-dark"><i class="fa-solid fa-cloud-word"></i>등록</button>
+					<button class="btn btn-dark">
+						<i class="fa-solid fa-cloud-word"></i>
+						등록
+					</button>
 				</form>
 			</div>
 		</div>

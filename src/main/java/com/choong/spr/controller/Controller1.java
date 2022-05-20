@@ -16,82 +16,82 @@ public class Controller1 {
 
 	@Autowired
 	private Service1 service;
-	
-	
-//	@RequestMapping("/board/list")
-//	public void listBoard(Model model) {
-//		List<BoardDto> list = service.listBoard();
-//		
-//		model.addAttribute("boardList", list);
-//	}
-	
+
+	//	@RequestMapping("/board/list")
+	//	public void listBoard(Model model) {
+	//		List<BoardDto> list = service.listBoard();
+	//		
+	//		model.addAttribute("boardList", list);
+	//	}
+
 	@GetMapping("/board/list")
-	public void listBoard(@RequestParam(name="page", defaultValue="1") int page, Model model) {
+	public void listBoard(@RequestParam(name = "type", defaultValue = "") String type,
+			@RequestParam(name = "keyword", defaultValue = "") String keyword,
+			@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
 		int rowPerPage = 5;
-		
+
 		int totalRecords = service.countWriting();
 		int end = (totalRecords - 1) / rowPerPage + 1;
-		
+
 		PageInfoDto pageInfo = new PageInfoDto();
-		
+
 		pageInfo.setCurrent(page);
 		pageInfo.setEnd(end);
 
 		model.addAttribute("pageInfo", pageInfo);
-		
-		List<BoardDto> list = service.listBoard(page, rowPerPage);
-		
+
+		List<BoardDto> list = service.listBoard(type, keyword, page, rowPerPage);
+
 		model.addAttribute("boardList", list);
-		
+
 	}
-	
- 	
+
 	@GetMapping("/board/{id}")
 	public String getBoard(@PathVariable("id") int id, Model model) {
 		BoardDto dto = service.getBoard(id);
 		List<ReplyDto> replyList = service.listReplyByBoardId(id);
-		
+
 		model.addAttribute("board", dto);
 		model.addAttribute("replyList", replyList);
 		return "/board/board/get";
 	}
-	
+
 	@PostMapping("/board/modify")
 	public String modifyBoard(BoardDto board) {
 		boolean success = service.updateBoard(board);
-		
-		if(success) {
-			
+
+		if (success) {
+
 		} else {
-			
+
 		}
 		return "redirect:/board/board/" + board.getId();
 	}
-	
+
 	@PostMapping("/board/remove")
 	public String removeBoard(int id) {
 		boolean success = service.removeBoardById(id);
-		
-		if(success) {
-			
+
+		if (success) {
+
 		} else {
-			
+
 		}
 		return "redirect:/board/board/list";
 	}
-	
+
 	@GetMapping("/board/write")
 	public void writeBoard() {
-		
+
 	}
-	
+
 	@PostMapping("/board/write")
 	public String writeBoardProcess(BoardDto board) {
 		boolean success = service.addBoard(board);
-		if(success) {
-			
+		if (success) {
+
 		} else {
-			
+
 		}
 		return "redirect:/board/board/" + board.getId();
 	}

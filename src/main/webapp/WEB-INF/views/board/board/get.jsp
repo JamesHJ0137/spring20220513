@@ -19,7 +19,10 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 	referrerpolicy="no-referrer"></script>
-
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
 
 <title>${board.id }번게시물</title>
 </head>
@@ -37,17 +40,19 @@
 
 				<form action="${appRoot }/board/board/modify" method="post">
 					<input type="hidden" name="id" value="${board.id }" />
-					
+
 					<label class="form-label" for="input1">제목</label>
-					<input class="form-control" type="text" value="${board.title }" name="title" required id="input1" />
+					<input class="form-control" type="text" value="${board.title }"
+						name="title" required id="input1" />
 					<br />
-					
+
 					<label for="input2" class="form-label">작성일</label>
 					<input type="datetime-local" value="${board.inserted }" readonly />
 					<br />
-					
+
 					<label for="textarea1" class="form-label">본문</label>
-					<textarea class="form-control" cols="100" rows="30" name="body" id="textarea1">${board.body }</textarea>
+					<textarea class="form-control" cols="100" rows="30" name="body"
+						id="textarea1">${board.body }</textarea>
 					<br />
 
 					<button class="btn btn-info">
@@ -91,7 +96,8 @@
 						<form action="${replyModifyLink }" method="post">
 							<input type="hidden" value="${reply.id }" name="id" />
 							<input type="hidden" name="boardId" value="${board.id }" />
-							<input type="text" value="${reply.content }" name="content" size="100"/>
+							<input type="text" value="${reply.content }" name="content"
+								size="100" />
 							<br />
 							<button class="btn btn-info">
 								<i class="fa-solid fa-eraser"></i>

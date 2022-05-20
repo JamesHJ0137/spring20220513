@@ -19,8 +19,13 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 	referrerpolicy="no-referrer"></script>
-
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
+	
 <title>자유 게시판</title>
+
 </head>
 <body>
 
@@ -35,10 +40,12 @@
 			</div>
 			<div class="col-11">
 				<h1>자유게시판</h1>
-				<h2>자유롭게 글을 쓸 수 있는 게시판입니다.
-					<button class="btn btn-dark" type="button" onclick="location.href='${writeLink }'">나도 글쓰기</button>
+				<h2>
+					자유롭게 글을 쓸 수 있는 게시판입니다.
+					<button class="btn btn-dark" type="button"
+						onclick="location.href='${writeLink }'">나도 글쓰기</button>
 				</h2>
-				
+
 
 				<table class="table">
 					<thead>
@@ -76,16 +83,6 @@
 
 	<div class="mt-3">
 		<ex:PagiNation path="list" />
-
-		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-			<div class="container-fluid justify-content-center">
-				<form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="Search"
-						aria-label="Search">
-					<button class="btn btn-outline-primary" type="submit">Search</button>
-				</form>
-			</div>
-		</nav>
 	</div>
 
 </body>

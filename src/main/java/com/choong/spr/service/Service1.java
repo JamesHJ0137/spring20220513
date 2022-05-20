@@ -1,14 +1,14 @@
 package com.choong.spr.service;
 
-import java.time.*;
-import java.util.*;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
-import org.springframework.transaction.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.choong.spr.domain.*;
-import com.choong.spr.mapper.*;
+import com.choong.spr.domain.BoardDto;
+import com.choong.spr.domain.ReplyDto;
+import com.choong.spr.mapper.Mapper1;
 
 @Service
 public class Service1 {
@@ -18,9 +18,9 @@ public class Service1 {
 	@Autowired
 	private Mapper1 replyMapper;
 	
-	public List<BoardDto> listBoard(int page, int rowPerPage) {
+	public List<BoardDto> listBoard(String type, String keyword, int page, int rowPerPage) {
 		int from = (page-1) * rowPerPage;
-		return mapper.selectBoard(from, rowPerPage);
+		return mapper.selectBoard(type, "%" + keyword + "%", from, rowPerPage);
 	}
 
 	public BoardDto getBoard(int id) {
