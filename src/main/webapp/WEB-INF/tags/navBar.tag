@@ -35,25 +35,10 @@
 					</a>
 				</li>
 			</ul>
+
+			
+
 		</div>
 	</div>
 </nav>
 
-<form action="${listUrl }" class="d-flex">
-	<select name="type" id="" class="form-select">
-		<option value="all"
-			${param.type != 'title' && param.type != 'body' ? 'selected' : '' }>전체</option>
-		<option value="title" ${param.type == 'title' ? 'selected' : '' }>제목</option>
-		<option value="body" ${param.type == 'body' ? 'selected' : '' }>본문</option>
-	</select>
-</form>
-
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-	<div class="container-fluid justify-content-center">
-		<form class="d-flex">
-			<input class="form-control me-2" type="search" placeholder="Search"
-				aria-label="Search">
-			<button class="btn btn-outline-primary" type="submit">Search</button>
-		</form>
-	</div>
-</nav>
